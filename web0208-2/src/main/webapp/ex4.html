@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	table, td { border: 1px solid red; }
+</style>
+</head>
+<body>
+	<h1>입력폼 연습</h1>
+	<form>
+	<fieldset>
+		<legend>회원가입</legend>
+		<div>이름 : <input type="text"></div>
+		<div>비밀번호 : <input type="password"></div>
+		
+		<table>
+			<tr>
+				<td>이름</td>
+				<td><input type="text"></td>
+			</tr>
+			<tr>
+				<td>비밀번호</td>
+				<td><input type="password"></td>
+			</tr>
+			<tr>
+				<td>나이</td>
+				<td><input type="number" min="0" max="200" step="1"></td>
+			</tr>
+			<tr>
+				<td>생일</td>
+				<td><input type="date"></td>
+			</tr>
+			<tr>
+				<td>좋아하는 색상</td>
+				<td><input type="color"></td>
+			</tr>
+			<tr>
+				<td>별점</td>
+				<td><input type="range" min="0" max="100" step="10"></td>
+			</tr>
+			<tr>
+				<td>성별</td>
+				<td>
+					<input type="radio" value="남" name="gender">남
+					<input type="radio" value="여" name="gender">여
+				</td>
+			</tr>
+			<tr>
+				<td>취미</td>
+				<td>
+					<input type="checkbox" value="야구" name="hobby">야구
+					<input type="checkbox" value="축구" name="hobby">축구
+					<input type="checkbox" value="게임" name="hobby">게임
+				</td>
+			</tr>
+			<tr>
+				<td>소속</td>
+				<td>
+					<select>
+						<option value="">강의실 선택</option>
+						<option value="1">1강의실</option>
+						<option value="2">2강의실</option>
+						<option value="3">3강의실</option>
+						<option value="4">4강의실</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>메모</td>
+				<td><textarea rows="3" cols="30"></textarea></td>
+			</tr>
+			<tr>
+			<td colspan="2"><button type="button">회원가입</button></td>
+			
+			</tr>
+		</table>
+		
+		
+		</fieldset>
+	</form>
+</body>
+</html>
