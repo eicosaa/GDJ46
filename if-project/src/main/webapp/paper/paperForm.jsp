@@ -7,6 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<h1>온라인 시험</h1>
+	<div>
+		<a href="../index.jsp">홈으로</a>
+	</div>
 	<form method="post" action="./paperAction2.jsp">
 		<p>
 			이름 : <input type = "text" name = "name">
