@@ -21,7 +21,11 @@ public class Ex3 {
 		// 1) 데이터 타입(참조 타입) 역할
 		// 2) 메서드를 담고 있는 상자(컨테이너) 역할
 		Student student = null; // null 참조 타입이 아무것도 가르칠 것이 없다는 초기값
-		student = new Student();
+		student = new Student(); // student 객체 참조 변수, 객체 변수
+		student.no = 17; // . 객체 참조 연산자 ~의, ~에, of, in, 소유격
+		student.age = 30;
+		System.out.println(student.no);
+		System.out.println(student.age);
 
 	}
 
