@@ -51,7 +51,7 @@
 	String homepage = request.getParameter("homepage");
 	System.out.println(homepage + " <-- homepage");
 	
-	int sales = Integer.parseInt(request.getParameter("sales"));
+	long sales = Long.parseLong(request.getParameter("sales"));
 	System.out.println(sales + " <-- sales");
 	
 	int since = Integer.parseInt(request.getParameter("since"));

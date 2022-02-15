@@ -24,7 +24,12 @@
 			</tr>
 			<tr>
 				<td>협약서</td>
-				<td><input type="text" name="document"></td>
+				<td>
+					<select name="document">
+						<option value="false">N</option>
+						<option value="true">Y</option>
+					</select>
+				</td>
 			</tr>
 			<tr>
 				<td>회사명</td>
@@ -56,7 +61,12 @@
 			</tr>
 			<tr>
 				<td>현장 실습</td>
-				<td><input type="text" name="internship"></td>
+				<td>
+					<select name="internship">
+						<option value="false">N</option>
+						<option value="true">Y</option>
+					</select>
+				</td>
 			</tr>
 			<tr>
 				<td>연봉(대졸)</td>
@@ -64,7 +74,12 @@
 			</tr>
 			<tr>
 				<td>청년내일채움공제</td>
-				<td><input type="text" name="tomorrow"></td>
+				<td>
+					<select name="tomorrow">
+						<option value="false">N</option>
+						<option value="true">Y</option>
+					</select>
+				</td>
 			</tr>
 			<tr>
 				<td>홈페이지</td>
@@ -88,27 +103,57 @@
 			</tr>
 			<tr>
 				<td>청년친화</td>
-				<td><input type="text" name="young"></td>
+				<td>
+					<select name="young">
+						<option value="false">N</option>
+						<option value="true">Y</option>
+					</select>
+				</td>
 			</tr>
 			<tr>
 				<td>강소기업</td>
-				<td><input type="text" name="smallGiant"></td>
+				<td>
+					<select name="smallGiant">
+						<option value="false">N</option>
+						<option value="true">Y</option>
+					</select>
+				</td>
 			</tr>
 			<tr>
 				<td>우수기업</td>
-				<td><input type="text" name="excellence"></td>
+				<td>
+					<select name="excellence">
+						<option value="false">N</option>
+						<option value="true">Y</option>
+					</select>
+				</td>
 			</tr>
 			<tr>
 				<td>메인비즈</td>
-				<td><input type="text" name="mainbiz"></td>
+				<td>
+					<select name="venture">
+						<option value="false">N</option>
+						<option value="true">Y</option>
+					</select>
+				</td>
 			</tr>
 			<tr>
 				<td>이노비즈</td>
-				<td><input type="text" name="innobiz"></td>
+				<td>
+					<select name="venture">
+						<option value="false">N</option>
+						<option value="true">Y</option>
+					</select>
+				</td>
 			</tr>
 			<tr>
 				<td>벤처인증</td>
-				<td><input type="text" name="venture"></td>
+				<td>
+					<select name="venture">
+						<option value="false">N</option>
+						<option value="true">Y</option>
+					</select>
+				</td>
 			</tr>
 		</table>
 		<tr>
