@@ -38,31 +38,31 @@
  		q1 = request.getParameter("q1");
  	}
  	if(request.getParameter("q2") == null) { 
- 		q1 = request.getParameter("q2");
+ 		q2 = request.getParameter("q2");
  	}
  	if(request.getParameter("q3") == null) { 
- 		q1 = request.getParameter("q3");
+ 		q3 = request.getParameter("q3");
  	}
  	if(request.getParameter("q4") == null) { 
- 		q1 = request.getParameter("q4");
+ 		q4 = request.getParameter("q4");
  	}
  	if(request.getParameter("q5") == null) { 
- 		q1 = request.getParameter("q5");
+ 		q5 = request.getParameter("q5");
  	}
  	if(request.getParameter("q6") == null) { 
- 		q1 = request.getParameter("q6");
+ 		q6 = request.getParameter("q6");
  	}
  	if(request.getParameter("q7") == null) { 
- 		q1 = request.getParameter("q7");
+ 		q7 = request.getParameter("q7");
  	}
  	if(request.getParameter("q8") == null) { 
- 		q1 = request.getParameter("q8");
+ 		q8 = request.getParameter("q8");
  	}
  	if(request.getParameter("q9") == null) { 
- 		q1 = request.getParameter("q9");
+ 		q9 = request.getParameter("q9");
  	}
  	if(request.getParameter("q10") == null) { 
- 		q1 = request.getParameter("q10");
+ 		q10 = request.getParameter("q10");
  	}
 	
 	// 문제 정답 셋팅
