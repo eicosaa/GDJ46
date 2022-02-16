@@ -26,4 +26,10 @@
 	System.out.println(total + " <-- total");
 	System.out.println(average + " <-- average");
 	
+	// 평균을 소수점 첫번째 자리까지 반올림하기
+	// Math.round 방법
+	System.out.println(Math.round(average * 10) /10.0 + " <-- average"); 
+	// String.format 방법
+	System.out.println(String.format("%.1f", average) + " <-- average"); 
+	
 %>
