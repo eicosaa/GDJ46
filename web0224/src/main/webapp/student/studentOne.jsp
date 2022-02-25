@@ -74,8 +74,8 @@
 		</tr>
 	</table>
 	<div>
-		<a href = "./updateStudentForm.jsp?StudentNo=<%= student.studentNo %>">[수정]</a>
-		<a href = "./deleteStudentForm.jsp?StudentNo=<%= student.studentNo %>">[삭제]</a>
+		<a href = "./updateStudentForm.jsp?studentNo=<%= student.studentNo %>">[수정]</a>
+		<a href = "./deleteStudentForm.jsp?studentNo=<%= student.studentNo %>">[삭제]</a>
 	</div>
 </body>
 </html>
