@@ -1,0 +1,12 @@
+2022-03-11
+- guestbook table 생성
+- blog 프로젝트에 board / guestbook / todo 폴더 생성
+- 마리아 2.75버전 
+	web은 lib에 넣기
+	app은 프로젝트 우클릭 > build path > configure build path > libraries > Classpath > 
+		Add External JARs > 마리아
+
+- 이미 테이블에 데이터가 들어간 상태이기에 guestbook_pw를 넣을 때
+테이블에 guestbook_pw 만들고 (기본값 null, null 허용 체크)
+UPDATE guestbook SET guestbook_pw = '1234';
+테이블 기본값 null, null 허용 체크 풀기
