@@ -1,0 +1,14 @@
+photo table query
+~create query
+CREATE TABLE `photo` (
+	`photo_no` INT(11) NOT NULL AUTO_INCREMENT,
+	`photo_name` VARCHAR(100) NOT NULL COLLATE 'utf8_general_ci',
+	`photo_original_name` VARCHAR(100) NOT NULL COLLATE 'utf8_general_ci',
+	`photo_type` VARCHAR(50) NOT NULL COLLATE 'utf8_general_ci',
+	`photo_pw` VARCHAR(50) NOT NULL COLLATE 'utf8_general_ci',
+	`writer` VARCHAR(50) NOT NULL COLLATE 'utf8_general_ci',
+	`create_date` DATETIME NOT NULL,
+	`update_date` DATETIME NOT NULL,
+	PRIMARY KEY (`photo_no`) USING BTREE
+)
+[출처] [GDJ46] 0312 - 2. 사진 게시판 (자바 교실) | 작성자 박성환
