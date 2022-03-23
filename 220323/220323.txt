@@ -1,0 +1,81 @@
+/* 1.
+	public static void main(String[] args) {
+		Test t = new Test();
+		// Test2 t2 = new Test2();
+		
+		t.hello();
+		// Test.hello(); 메모리 로드되는 순서 상 호출 불가
+		
+		Test.hi();
+		t.hi(); // 실제로는 Test.hi()호출
+		
+		/* 메모리 로드되는 순서
+		 * 1) Test, hi
+		 * 2) t
+		 * 3) hello
+		 */
+	}
+*/
+
+/* 2.
+	public static void main(String[] args) {
+		Test t1 = new Test();
+		/*
+		 * 메모리에 로드되는 순서
+		 * Test, banNum -> t1 -> t1.num
+		 */
+		
+		t1.num = 10;
+		Test.banNum = 8;
+		System.out.println(t1.banNum);
+		// t1은 banNum이 없기 때문에 Test.banNum을 호출 <- 나쁜 표현
+		
+		// 일반 내부 클래스의 객체 생성
+		Test.InTest inTest = t1.new InTest();
+		inTest.x = 100;
+		
+		// static 내부 클래스의 객체 생성
+		Test.InTest2 inTest2 = new Test.InTest2();
+		inTest2.y = 100;
+	}
+*/
+
+/* 3.
+package ex;
+
+public class TestMain {
+
+	public static void main(String[] args) {
+		Test t1 = new Test();
+		
+		t1.name = "자바";
+		t1.hello();
+		
+		Test t2 = new Test();
+		
+		t2.name = "46기";
+		t2.hello();
+	}
+}
+*/
+
+/* 4.
+package ex;
+
+public class TestMain {
+
+	public static void main(String[] args) {
+		Test t1 = new Test();
+		
+		t1.name = "자바";
+		t1.hello();
+		
+		Test t2 = new Test();
+		
+		t2.name = "46기";
+		t2.hello();
+		
+		Test.hi();
+	}
+}
+*/
