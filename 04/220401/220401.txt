@@ -1,0 +1,84 @@
+dyn project > sakila > 우클릭 > share project >create > 미리 만들어 둔 파일로
+browse > finish > finish 
+
+우클릭 team
+git staging
+unstaged changes를 staged changes로 옮기기
+commit message  작성 후
+commit and push 버튼
+URI 넣기
+깃허브 토큰 생성 ( https://hoohaha.tistory.com/37 참고)
+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
+패스워드에 넣고
+밑에 체크하고
+
+
+
+commit message 중요 (자세히 작성)
+ex > 파일이름 insert a 메소드 수정
+파일이름 insert a 메소드 추가
+
+집에서 하는 방법
+(폴더 이클립스에서, 로컬디스크 D에서 삭제 / 폴더 다시 생성)
+우클릭 > import > import > git > project from git > clone URI 
+
+
+
+
+
+package dao;
+
+import java.util.*;
+import java.sql.*;
+
+public class StoreDao {
+	
+	public List<HashMap<String, Object>> selectStoreList() {
+		// ArrayList는 List 인터페이스의 구현체 중 하나이다.
+		// HashMap은 Map 인터페이스의 구현체 중 하나이다.
+		List<HashMap<String, Object>> list = new ArrayList<>();
+		
+		try { // -클래스가 없으면 ClassNotFoundException이 발생하니 예외처리를 한다.
+			Class.forName("org.mariadb.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			System.out.println("Class.forName() 실행 중 ClassNotFoundException 발생");
+		}
+		
+		Connection conn = null;
+		try {
+			conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/sakila", "root", "java1234");
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("DriverManager.getConnection() 실행 중 SQLException 발생");
+		}
+		
+		PreparedStatement stmt = null;
+		try {
+			stmt = conn.prepareStatement("");
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+			System.out.println("Connection.prepareStatement() 실행 중 SQLException 발생");
+		}
+		
+		try {
+			ResultSet rs = stmt.executeQuery();
+			while(rs.next()) {
+				list.add(null);
+			}
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+			System.out.println("Statement.executeQuery() 실행 중 SQLException 발생");
+		}
+		
+		try {
+			conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("Connection.close() 실행 중 SQLException 발생");
+		}
+		return list;
+	}
+}
+
+
