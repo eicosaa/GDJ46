@@ -1,0 +1,7 @@
+https://github.com/eicosaa/Sakila.git
+
+(연결하지 않은 기기)깃허브에서 저장되어 있는 내용 가져오기
+import > Git > Project from Git > Clone URI > Next > Next > finish
+
+JRE System Libaray 클릭 후 우클릭 > Properties > Workspace default JRE (jre) > Apply and Close
+
