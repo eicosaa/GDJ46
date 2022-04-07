@@ -1,0 +1,77 @@
+/*
+- 검색 & 출력
+대여 일자,
+고객 - 고객 ID 조인,
+스토어 - 스탭 ID 조인,
+-출력
+필름이름 - 인벤토리ID - 필름ID 조인
+*/
+SELECT *
+FROM rental;
+
+/* 2번 가게에서 tony가 2005-07-01 ~ 2005-07-30 대여한 목록 */
+SELECT 
+	r.*, 
+	CONCAT(c.first_name, ' ', c.last_name) cName, 
+	s.store_id storeId, 
+	i.film_id filmId,
+	f.title
+FROM rental r INNER JOIN customer c
+ON r.customer_id = c.customer_id
+	INNER JOIN staff s
+	ON r.staff_id = s.staff_id
+		INNER JOIN inventory i
+		ON r.inventory_id = i.inventory_id
+			INNER JOIN film f
+			ON i.film_id = f.film_id
+WHERE s.store_id = 2 
+AND CONCAT(c.first_name, ' ', c.last_name) LIKE '%JOEL%'
+AND r.rental_date BETWEEN STR_TO_DATE('2005-07-01', '%Y-%m-%d')
+AND STR_TO_DATE('2005-07-30', '%Y-%m-%d');
+
+
+어제의 filmSearch는 뷰가 존재해서 이러한 쿼리문을 사용하지 않았다.
+
+
+대여 상세 검색 경우의 수
+1. 가게만 검색했을 때 (storeId)
+2. 대여 날짜만 검색했을 때 (beginDate, endDate)
+3. 가게, 대여 날짜만 검색했을 때 (storeId, beginDate, endDate)
+4. 아무것도 입력하지 않았을 때
+
+
+
+SELECT *
+FROM payment;
+
+# 총매출
+SELECT SUM(amount)
+FROM payment;
+
+# staff별 매출
+SELECT staff_id, SUM(amount)
+FROM payment
+GROUP BY staff_id;
+
+# staff별 년도별 매출
+SELECT staff_id, YEAR(payment_date), SUM(amount)
+FROM payment
+GROUP BY staff_id, YEAR(payment_date);
+
+# store별 매출
+SELECT t.storeid, SUM(t.amount) 
+FROM (SELECT p.amount amount, s.store_id storeid
+   FROM payment p INNER JOIN staff s
+   ON p.staff_id = s.staff_id) t
+GROUP BY t.storeid;
+
+# 카테고리별 영화 
+SELECT t.category_id, c.name, t.cnt
+FROM	(SELECT category_id, COUNT(*) cnt
+		FROM film_category
+		GROUP BY category_id
+		ORDER BY COUNT(*) DESC) t
+		INNER JOIN
+		category c
+		ON t.category_id = c.category_id
+ORDER BY t.cnt DESC;
