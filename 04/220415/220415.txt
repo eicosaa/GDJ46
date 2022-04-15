@@ -1,0 +1,20 @@
+44 92 115
+운영체제에 JAVA_HOME 변수를 만들고
+JAVA_HOME = 자바 설치 폴더;
+
+C:\Program Files\Java\jdk-11.0.14
+
+Path
+C:\Program Files\Java\jdk-11.0.14\bin
+%JAVA_HOME%\bin
+-> 자바의 버전이 바뀔 수 있기에 %JAVA_HOME%
+
+cmd -> javac -version
+
+web.xml
+servlet
+
+select경우 결과값이 있으니까 c-m-v
+insert c-m
+insert : c - m - c sendredirect - other c - m - v
+

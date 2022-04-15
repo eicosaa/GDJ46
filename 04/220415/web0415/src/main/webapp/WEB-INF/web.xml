@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>web0415</display-name>
+   <!-- 1) 서블릿클래스를 등록 -->
+   <servlet>
+      <servlet-name>MyServlet</servlet-name>
+      <servlet-class>web.MyServlet</servlet-class>
+   </servlet>
+   <!-- 2) 등록된 서블릿클래스를 특정한 맵핑이름 허가(웹클라인트가 접속가능하도록) -->
+   <servlet-mapping>
+      <servlet-name>MyServlet</servlet-name>
+      <url-pattern>/MyServlet</url-pattern>
+   </servlet-mapping>
+</web-app>
