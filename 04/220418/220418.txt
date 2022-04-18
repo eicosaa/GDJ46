@@ -1,0 +1,83 @@
+eicosaa <fomalhaut612@naver.com>
+176
+
+https://www.mockaroo.com/
+테이블 데이터 랜덤 생성
+--------------------------------------------------
+웹 브라우저에 WAS 요청 방식
+
+1. 웹 브라우저 주소창에 직접 요청 -> GET ex) http://www.gdu.co.kr/index?id=test
+
+2. HTML 페이지에서 html 태그를 이용하는 방식
+   1) <a> 태그를 이용 -> GET ex) <a href = "http://www.gdu.co.kr/index?id=test">goodee</a>
+   2) <form> 태그를 이용 -> GET / POST <form method = "get"> / <form method = "post">
+
+3. HTML 페이지에서 javascript Language를 이용하는 방식 -> GET / POST
+
+---------------------------------------------------
+package controller;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/login")
+public class LoginServlet extends HttpServlet {
+	/*
+	@Override
+	public void init() throws ServletException {
+		System.out.println("LoginServlet 객체가 생성되었습니다.");
+	}
+	*/
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		this.doPost(request, response);
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// 1), 2), 3)을 물리적 파일로 완전히 분리하는 구조 -> 모델2(MVC패턴) 구조
+		
+		// 1) request 분석(C)
+		request.setCharacterEncoding("utf-8"); // 폼값(POST)에 한글이 있는데 한글 utf-8 방식 인코딩 
+		String id = request.getParameter("userId");
+		String pw = request.getParameter("userPw");
+		String[] hobby = request.getParameterValues("hobby");
+		String[] interest = request.getParameterValues("interest");
+		// 디버깅
+		
+		// 2) 비즈니스 로직 처리 -> 모델(M) -> 모델값 도출
+		// 위임( ex) dao메서드 호출)
+		String result = "";
+		if(id.equals("guest") && pw.equals("1234")) {
+			// 디버깅
+			System.out.println("로그인 성공");
+			result = "success! Hello.";
+		} else {
+			// 디버깅
+			System.out.println("로그인 실패");
+			result = "fail! Bye.";
+		}
+		
+		String hobbyResult = "";
+		for(String h : hobby) {
+			hobbyResult += hobbyResult + h + " ";
+		}
+		String interestResult = "";
+		for(String i : interest) {
+			interestResult += interestResult + i + " ";
+		}
+		
+		// 3) response 객체를 이용하여 모델값(result, hobbyResult, interestResult)을
+		// html 화면에 출력 -> 뷰(V) 위임 ( ex) include or forward JSP)
+		PrintWriter out = response.getWriter();
+		out.print("<html><body><div>" + result + "</div><div>" + hobbyResult + interestResult + "</body></html>");
+	}
+
+}
+

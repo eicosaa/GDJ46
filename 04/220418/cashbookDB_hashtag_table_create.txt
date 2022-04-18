@@ -1,0 +1,10 @@
+CREATE TABLE `hashtag` (
+	`cashbook_no` INT(11) NOT NULL,
+	`tag` VARCHAR(50) NOT NULL COLLATE 'utf8_general_ci',
+	`create_date` DATETIME NOT NULL,
+	PRIMARY KEY (`cashbook_no`, `tag`) USING BTREE,
+	CONSTRAINT `FK__cashbook` FOREIGN KEY (`cashbook_no`) REFERENCES `cashbook`.`cashbook` (`cashbook_no`) ON UPDATE NO ACTION ON DELETE NO ACTION
+)
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+;

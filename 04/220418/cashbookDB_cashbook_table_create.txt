@@ -1,0 +1,13 @@
+CREATE TABLE `cashbook` (
+	`cashbook_no` INT(11) NOT NULL AUTO_INCREMENT,
+	`cash_date` DATE NOT NULL,
+	`kind` ENUM('수입','지출') NOT NULL COLLATE 'utf8_general_ci',
+	`cash` INT(11) NOT NULL,
+	`memo` TINYTEXT NULL DEFAULT NULL COLLATE 'utf8_general_ci',
+	`update_date` DATETIME NOT NULL,
+	`create_date` DATETIME NOT NULL,
+	PRIMARY KEY (`cashbook_no`) USING BTREE
+)
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+;
