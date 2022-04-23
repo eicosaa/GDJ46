@@ -1,0 +1,47 @@
+1) 사용자 crud, 로그인 / 로그아웃
+2) 컨트롤러에 로그인 유/무에 따라 접근 허가
+3) 사용자별 수입 / 지출 출력
+4) 데이터 수정 / 삭제 시 계정 비밀번호 입력
+
+-----------------------------------------------------------------
+요청			컨트롤러				모델						뷰
+
+			접속허가체크) 로그아웃 상태
+Login.jsp			InsertMemberController.doGet()							InsertMember.jsp
+InsertMember.jsp		InsertMemberController.doPost()	MemberDao.insertMember()				redirect-> LoginController	
+
+			접속허가체크) 로그인 상태
+페이지에서 memberId클릭 	SelectMemberOneController.doGet()	MemberDao.selectMemberOne()			MemberOne.jsp
+
+			접속허가체크) 로그인 상태			
+MemberOne.jsp		UpdateMemberController.doGet()							UpdateMember.jsp		
+UpdateMemberPw.jsp	UpdateMemberController.doPost()	MemberDao.updateMember()			redirect -> LogoutController
+
+			접속허가체크) 로그인 상태
+MemberOne.jsp		DeleteMemberController.doGet()							DeleteMember.jsp		
+DeleteMember.jsp		DeleteMemberController.doPost()	MemberDao.deleteMember()			redirect -> LogoutController
+
+
+기타 이슈
+cashbook insert시 FK memberId입력
+cashbook select시 WHERE member_id = sessionMemberId 추가
+접속허가체크) 로그인 상태에서 가능하도록 컨트롤러 수정
+접속허가체크) 로그인 상태인 모든 뷰에서 sessionMemberId 출력(SelectMemberOneController 링크)
+
+
+
+CREATE TABLE `member` (
+	`member_id` VARCHAR(50) NOT NULL COLLATE 'utf8_general_ci',
+	`member_pw` VARCHAR(100) NOT NULL COLLATE 'utf8_general_ci',
+	`member_name` VARCHAR(50) NOT NULL COLLATE 'utf8_general_ci',
+	`member_phone` VARCHAR(50) NOT NULL COLLATE 'utf8_general_ci',
+	`member_email` VARCHAR(50) NOT NULL COLLATE 'utf8_general_ci',
+	`member_birth` DATE NOT NULL,
+	`member_addr` VARCHAR(50) NOT NULL COLLATE 'utf8_general_ci',
+	`member_gender` VARCHAR(50) NOT NULL COLLATE 'utf8_general_ci',
+	`create_date` DATETIME NOT NULL,
+	PRIMARY KEY (`member_id`) USING BTREE
+)
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+;

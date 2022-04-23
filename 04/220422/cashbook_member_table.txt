@@ -1,0 +1,27 @@
+CREATE TABLE `member` (
+	`member_id` VARCHAR(50) NOT NULL COLLATE 'utf8_general_ci',
+	`member_pw` VARCHAR(100) NOT NULL COLLATE 'utf8_general_ci',
+	`create_date` DATETIME NOT NULL,
+	PRIMARY KEY (`member_id`) USING BTREE
+)
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+;
+
+
+INSERT INTO member VALUES (
+	'guest'
+	, PASSWORD('1234')
+	, NOW()
+);
+
+SELECT * FROM member;
+
+SELECT * FROM cashbook;
+
+UPDATE cashbook SET member_id = 'guest';
+
+SELECT *
+FROM member
+WHERE member_id = 'guest' AND member_pw = PASSWORD('1234');
+
