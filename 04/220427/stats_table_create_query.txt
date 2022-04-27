@@ -1,0 +1,8 @@
+CREATE TABLE `stats` (
+	`day` DATE NOT NULL,
+	`cnt` INT(11) NOT NULL,
+	PRIMARY KEY (`day`) USING BTREE
+)
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+;
