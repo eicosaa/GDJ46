@@ -1,0 +1,7 @@
+servlet api(라이브러리)
+
+1) servlet(jsp) api - 클라이언트 호출에 의해서 ex) 웹 브라우저 get / post
+
+2) filter api - 클라이언트 호출에 의해서
+- 다수에 대한 공통점이 있을 때
+3) listener api - 서버의 상태 변화(이벤트)
