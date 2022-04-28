@@ -1,0 +1,29 @@
+# 중복되는 데이터 찾기 (전체 - 중복되지 않은 데이터 = 중복된 데이터)
+
+# 1. 전체 행의 수
+SELECT COUNT(*) FROM address;
+# 2-1. 중복되는 데이터 행의 수
+# 2-2. 중복되는 데이터를 제외한 행의 수 distinct / group by 
+# 2-2-1. group by 방법
+SELECT * FROM address
+GROUP BY zip_code, province, city, town, street;
+# 2-2-2. distinct 방법
+SELECT DISTINCT CONCAT(zip_code, province, city, town, street) FROM address; # -행 259,819
+# 3. 새로운 테이블에 중복 제거 데이터 넣기
+CREATE TABLE address2
+AS
+SELECT * FROM address
+GROUP BY zip_code, province, city, town, street;
+
+# 중복된 결과가 제거되었는지 확인
+SELECT COUNT(*)
+FROM address2;
+
+###########################################################################
+# 검색
+SELECT * FROM address2
+WHERE CONCAT(province, city, town, street) LIKE '%가산디지털2로%';
+
+SELECT a2.id id, a2.province, a2.zip_code, a3.detail_addr
+FROM address2 a2 INNER JOIN address3 a3
+ON a2.id = a3.id;
