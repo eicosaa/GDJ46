@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	/*
+	function hello() {
+		alert('test');
+		return;
+	};
+	
+	let fun1 = function() {
+		alert('fun1');
+	}
+	
+	// console.log(hello());
+	// fun1();
+	
+	let fun2 = fun1; // let fun2 = fun1(); -함수코드가 fun2에 저장
+	console.log(fun2);
+	// fun2();
+	
+	(function() { alert('hi') })();
+	
+	let fun3 = function(name) {
+		alert('이름은 ' + name + '입니다');
+	}
+	
+	// fun3('구원이');
+	
+	let fun4 = function(x, y) {
+		return x + y;
+	}
+	
+	let result = fun4(4, 10);
+	alert(result); // 14
+	
+	let fun5 = function() { // 리턴 타입 -> 함수
+		let innerFun = function() {
+			alert('innerFun');
+		};
+		return innerFun;
+	};
+	
+	let fun6 = fun5();
+	// fun6();
+	
+	fun5()();
+	
+	let fun7 = function(a, b, f) {
+		return f(a, b);
+	}
+	*/
+	
+	let fun1 = function(callback) {
+		let x = callback(); // callback 변수는 함수다
+	}
+	
+	let a = function() {
+		return 'hello';
+	}
+	
+	// fun1(a);
+	
+	let b = function() {
+		return 27;
+	}
+	
+	// fun1(b);
+	
+	fun1(function() {
+		return '구원';
+	});
+	
+	let fun = function(a, b, callback) {
+		return callback(a, b);
+	}
+	
+	let result1 = fun(10, 5, function(x, y) {
+		return x + y;
+	});
+	alert(result1);
+	
+	let result2 = fun(10, 5, function(x, y) {
+		return x - y;
+	});
+	alert(result2);
+	
+	let result3 = fun(10, 5, function(x, y) {
+		return x * y;
+	});
+	alert(result3);
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>

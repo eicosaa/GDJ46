@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	/*
+	test();
+	// test2(); -실행불가
+	function test() { }; // -이름이 주어진 함수는 위로 올라감
+	
+	let test3 = test; // -같은 함수가 된다. /-(다름) let test3 = test(); test3의 반환값이 test로 들어간다.
+	
+	let test2 = function() {}; 
+	*/
+	
+	let member = {
+		id : "admin",
+		pw : "1234",
+		age : 26,
+		married : false,
+		hobby : ['야구', '당구', '독서'],
+		play : function() {
+			console.log('놀다');
+		},
+		phone : {
+			company : '삼성', 
+			name : "갤럭시s20",
+			on : function() {
+				console.log('phone on');
+			},
+			off : function() {
+				console.log('phone off');
+			}
+		}
+	};
+	
+	member.play();
+	
+	for(let i = 0; i < member.hobby.length; i += 1) {
+		console.log(member.hobby[i]);
+	}
+	
+	if(member.married) {
+		console.log('기혼');
+	} else {
+		console.log('미혼');
+	}
+</script>
+</head>
+<body>
+
+</body>
+</html>

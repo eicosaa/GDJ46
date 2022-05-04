@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form>
+		<div>
+			<button type = "button" id = "btn">버튼</button> <!-- click -->
+		</div>
+		<div>
+			<input type = "text" id = "txt1"> <!-- blur -->
+			<input type = "text" id = "txt2" readonly = "readonly">
+		</div>
+		
+		<div>
+			<select id = "sel">
+				<option value = "" selected = "selected">선택</option>
+				<option value = "레드">레드</option>
+				<option value = "그린">그린</option>
+				<option value = "블루">블루</option>
+			</select>
+			<input type = "text" id = "txt3" readonly = "readonly">
+		</div>
+		
+		<div>
+			<input type = "radio" name = "gender" class = "gender" value = "남">남
+			<input type = "radio" name = "gender" class = "gender" value = "여">여
+			<button id = "genderBtn">출력</button>
+		</div>
+		
+		<div>
+			<textarea rows = "3" cols = "50" id = "chat"></textarea>
+		</div>
+	</form>
+</body>
+<script>
+
+	let count = 0;
+	document.querySelector('#chat').addEventListener('keyup', function() {
+		count = document.querySelector('#chat').value.length;
+		if(count > 50) {
+			document.querySelector('#chat').value =
+				document.querySelector('#chat').value.substr(0, 50);
+			alert('50자까지 입력 가능');
+		}
+	});
+	
+	document.querySelector('#genderBtn').addEventListener('click', function() {
+		if(document.querySelector('.gender:checked') == null) {
+			alert('성별을 선택하세요');
+		} else {
+			alert(document.querySelector('.gender:checked').value);
+		};
+	});
+
+	document.querySelector('#sel').addEventListener('change', function() {
+		document.querySelector('#txt3').value = document.querySelector('#sel').value;
+	});
+
+	document.querySelector('#btn').addEventListener('click', function() {
+		alert('버튼 클릭');
+	});
+	
+	document.querySelector('#txt1').addEventlistener('blur', function() {
+	//	document.querySelector('#txt2').value = document.querySelector('#txt1').value;
+		let sn = document.querySelector('#txt1').value;
+		let sn7 = Number(sn.substr(6, 1)); // 7번째 문자를 숫자로
+		if(sn7 % 2 == 0) {
+			document.querySelector('#txt2').value = '여';
+		} else {
+			document.querySelector('#txt2').value = '남';
+		}
+	});
+</script>
+</html>
