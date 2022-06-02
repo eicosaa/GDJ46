@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="goodee.gdj.notice.mapper.NoticeMapper">
+
+	<!-- update action -->
+	<update id="updateNotice"
+			parameterType="goodee.gdj.notice.vo.Notice">
+		update notice
+		set 
+			notice_title = #{ noticeTitle }
+			, notice_content = #{ noticeContent }
+		where 
+			notice_no = #{ noticeNo }
+			and notice_pw = #{ noticePw }
+	</update>
+	
+	<!-- update form + 상세보기 -->
+	<select id="selectNoticeOne"
+			parameterType="int"
+			resultType="goodee.gdj.notice.vo.Notice">
+		select
+			notice_no noticeNo
+			, notice_title noticeTitle
+			, notice_content noticeContent
+			, create_date createDate
+		from notice
+		where notice_no = #{ noticeNo }
+	</select>
+	<!-- where notice_no = #{ noticeNo }에서 noticeNo는 x, z 등 값을 하나만 받기 때문에 아무거나 사용 가능하다 -->
+
+	<insert id="insertNotice"
+			parameterType="goodee.gdj.notice.vo.Notice">
+		insert into notice(
+			notice_title
+			, notice_content
+			, create_date
+			, notice_pw
+		) values (
+			#{ noticeTitle }
+			, #{ noticeContent }
+			, now()
+			, #{ noticePw }
+		)
+	</insert>
+	
+	<!-- delete -->
+	<delete id="deleteNotice"
+			parameterType="goodee.gdj.notice.vo.Notice">
+		delete from notice
+		where notice_no = #{ noticeNo }
+		and notice_pw = #{ noticePw }
+	</delete>
+	
+	<select id="selectTotalCount"
+			resultType="int">
+		select count(*) from notice
+	</select>
+	
+	<select id="selectNoticeByPage" 
+			resultType="goodee.gdj.notice.vo.Notice" 
+			parameterType="java.util.Map">
+		SELECT 
+			notice_no noticeNo
+			, notice_title noticeTitle
+			, create_date createDate
+		FROM notice
+		ORDER BY create_date DESC
+		LIMIT #{ startRow }, #{ rowPerPage }
+	</select>
+	
+</mapper>
