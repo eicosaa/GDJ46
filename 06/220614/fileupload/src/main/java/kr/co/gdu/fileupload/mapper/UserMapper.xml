@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.gdu.fileupload.mapper.UserMapper">
+
+	<update id="updateUserActivity">
+		UPDATE user
+		SET activity = 0
+		WHERE activity != 0 AND DATEDIFF(NOW(), last_login_date) > 365;
+	</update>
+
+	<select id="selectUserOne"
+			parameterType="kr.co.gdu.fileupload.vo.User"
+			resultType="kr.co.gdu.fileupload.vo.User">
+		SELECT
+			user_no userNo
+			, user_id userId
+		FROM user
+		WHERE user_id = #{ userId } AND user_pw = #{ userPw }
+	</select>
+
+	<select id="selectTotalCount"
+			parameterType="String"
+			resultType="int">
+		SELECT count(*)
+		FROM user
+		<where>
+			<if test="searchWord != null">
+				user_id like concat('%', #{ searchWord }, '%')
+			</if>
+		</where>
+	</select>
+	
+	<select id="selectUserList"
+			parameterType="Map"
+			resultType="kr.co.gdu.fileupload.vo.User">
+		SELECT
+			user_no userNo
+			, user_id userId
+			, user_pw userPw
+		FROM User
+		<where>
+			<if test="searchWord != null">
+				user_id like concat('%', #{ searchWord }, '%')
+			</if>
+		</where>
+		order by user_no
+		limit #{ beginRow }, #{ rowPerPage }
+	</select>
+
+</mapper>

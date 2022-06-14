@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.gdu.fileupload.mapper.NoticeMapper">
+
+	<select id="selectNoticeListByPage"
+			parameterType="java.util.Map"
+			resultType="kr.co.gdu.fileupload.vo.Notice">
+		select
+			notice_id noticeId
+			, notice_title noticeTitle
+			, notice_date noticeDate
+		from notice
+		order by notice_date desc
+		limit #{ beginRow }, #{ rowPerPage }
+	</select>
+
+	<select id="countNotice"
+			resultType="int">
+		select count(*) from notice
+	</select>
+	
+	<select id="selectNoticeOne"
+			parameterType="int"
+			resultType="kr.co.gdu.fileupload.vo.Notice">
+		select
+			notice_id noticeId
+			, notice_title noticeTitle
+			, notice_content noticeContent
+			, notice_date noticeDate
+		from notice
+		where notice_id = #{ noticeId }
+	</select>
+	
+	<insert id="insertNotice"
+			parameterType="kr.co.gdu.fileupload.vo.Notice">
+		<selectKey resultType="int" keyProperty="noticeId" order="AFTER">
+			select last_insert_id();
+		</selectKey>
+		insert into notice (
+			notice_title
+			, notice_content
+			, notice_date
+		) values (
+			#{ noticeTitle }
+			, #{ noticeContent }
+			, now()
+		)
+	</insert>
+	
+	<update id="updateNotice"
+			parameterType="kr.co.gdu.fileupload.vo.Notice">
+		update notice
+		set notice_title = #{ noticeTitle }
+			, notice_content = # { noticeContent }
+		where notice_id = #{ noticeId }
+	</update>
+	
+	<delete id="deleteNotice"
+			parameterType="int">
+		delete from notice
+		where notice_id = #{ notice_id }
+	</delete>
+	
+</mapper>

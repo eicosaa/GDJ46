@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+	$('document').ready(function() {
+		$('#btn').click(function() {
+			$.ajax({
+				type:'get'
+				, url:'/fileupload/test'
+				, success: function(m) { // 백엔드 응답 문자열을 자바스크립트 객체로 변환 후 매개변수 값으로 입력됨
+					// alert(m.id + m.pw);
+					$('#list').append('<div>' + m.id + '<div>');
+					$('#list').append('<div>' + m.pw + '<div>');
+				} // 응답 성공 시 실행할 함수
+			});
+		});
+	});
+</script>
+</head>
+<body>
+	<!-- 일반 호출 -->
+	<a href="/fileupload/test">a 태그를 이용하여 rest 호출</a>
+	
+	<form action="/fileupload/test" method="get">
+		<button>action으로 rest 호출</button>
+	</form>
+	
+	<!-- 자바스크립트 api를 이용한 비동기호출(Ajax) -->
+	<button type="button" id="btn">ajax api rest 호출</button>
+	<div id="list">
+	</div>
+</body>
+</html>
