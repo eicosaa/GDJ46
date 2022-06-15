@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
+<body>
+	<div id="myChart" style="width:100%; max-width:600px; height:500px;"></div>
+</body>
+<script>
+
+	// 차트에서 사용할 모델(데이터)로 가공
+	var myData = [['gender', 'count']];
+	
+	// 데이터를 호출
+	$.ajax({
+		type: 'get'
+		, url: '/stats/stats'
+		, success: function(jsonData) {
+			console.log(jsonData);
+			/*
+				[{gender: 'Male', count: 18}
+				 , {gender: 'Female', count: 27}
+				 , {gender: 'null', count:4}]
+			*/
+			for(var i=0; i < jsonData.length; i++) {
+				// var keys = jsonData[0].keys();
+				// console.log(jsonData[i].gender, jsonData[i].count);
+				myData.push([jsonData[i].gender, jsonData[i].count]);
+			}
+		}
+	});
+	
+	console.log(myData);
+	
+	// 차트를 그리는 로직
+	google.charts.load('current', {'packages':['corechart']});
+	google.charts.setOnLoadCallback(drawChart);
+	
+	function drawChart() {
+	var data = google.visualization.arrayToDataTable(myData);
+	
+	var options = {
+	  title:'World Wide Wine Production'
+	};
+	
+	var chart = new google.visualization.ColumnChart(document.getElementById('myChart'));
+	  chart.draw(data, options);
+	}
+</script>
+</html>
