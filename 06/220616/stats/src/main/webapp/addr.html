@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+	<button type="button" id="btn">주소리스트</button>
+	<div id="list">
+	</div>
+</body>
+<script>
+	$('#btn').click(function() {
+		$.ajax({
+			type:'get'
+			, url: '/stats/getAddr'
+			, success: function(a) {
+				console.log(typeof(a));
+				var a2 = JSON.parse(a);
+				console.log(typeof(a2));
+				console.log(a2);
+				
+				let arr = a2.results.juso; // 주소 배열
+				console.log(arr);
+				for(let i=0; i<arr.length; i++) {
+					$('#list').append('<div>' + arr[i].roadAddrPart1 + '</div>');
+				}
+			}
+		});
+	});
+</script>
+</html>
