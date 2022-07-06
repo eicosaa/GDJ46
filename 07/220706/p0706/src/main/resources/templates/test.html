@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>test view page</h1>
+	
+	<h2>변수값 출력</h2>
+	<div>
+		<span>이름 : </span>
+		<span th:text="${name}"></span>
+	</div>
+	
+	<h2>조건문 테스트</h2>
+	<div th:if="${age >= 10}" th:text="'10년 이상'">
+	</div>
+	<div th:if="${age < 10}" th:text="'10년 미만'">
+	</div>
+	
+	<h2>객체 출력</h2>
+	<div>
+		<div>
+			<span th:text="${vo.x}">X : </span>
+			<span th:text="${vo.y}">Y : </span>	
+		</div>
+	</div>
+	
+	<h2>리스트(배열) 출력</h2>
+	<table border="1">
+		<thead>
+			<tr>
+				<th>이름</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="s : ${list}">
+				<td th:text="${s}"></td>
+			</tr>
+		</tbody>
+	</table>
+	
+<!-- 
+ 	<a th:href="@{}"></a>
+ -->
+</body>
+</html>
